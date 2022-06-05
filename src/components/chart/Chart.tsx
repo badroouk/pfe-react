@@ -8,54 +8,35 @@ import {
   Tooltip,
   Legend,
 } from "recharts";
+import { axiosInstance } from "../../utils/axios";
 
-const data = [
+const defaultData = [
   {
-    time: "Page A",
-    value: 4000,
-  },
-  {
-    time: "Page B",
-    value: 3000,
-  },
-  {
-    time: "Page C",
-    value: 2000,
-  },
-  {
-    time: "Page D",
-    value: 2780,
-  },
-  {
-    time: "Page E",
-    value: 1890,
-  },
-  {
-    time: "Page F",
-    value: 2390,
-  },
-  {
-    time: "Page G",
-    value: 3490,
+    time: "start",
+    value: 0,
   },
 ];
 
+type chartProp =  {
+  time: string;
+  value: number
+}
 export default function Chart() {
-  const [chartData, setChartData] = useState<any>();
+  const [chartData, setChartData] = useState<chartProp[]>(defaultData);
 
   const fetchData = async () => {
-    const res = await fetch("backend url");
-    const data = await res.json();
-    // take response and add to stat
+    const res: any = await  axiosInstance.get('http://127.0.0.1:8000/api/data')
     setChartData([
       ...chartData,
       {
-        time: data.time,
-        value: data.value,
+        time: res.data[0].created_at,
+        value: res.data[0].temperature,
       },
     ]);
-    console.log(data);
+    // console.log( data[0][time]);
   };
+
+  console.log(chartData)
 
   useEffect(() => {
     fetchData();
@@ -71,7 +52,7 @@ export default function Chart() {
     <BarChart
       width={500}
       height={300}
-      data={data}
+      data={chartData}
       margin={{
         top: 5,
         right: 30,
