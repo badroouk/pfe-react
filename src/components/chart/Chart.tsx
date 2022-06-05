@@ -41,17 +41,30 @@ const data = [
 ];
 
 export default function Chart() {
-  const [chartData, setChartData] = useState();
+  const [chartData, setChartData] = useState<any>();
 
   const fetchData = async () => {
     const res = await fetch("backend url");
     const data = await res.json();
-    setChartData(data);
+    // take response and add to stat
+    setChartData([
+      ...chartData,
+      {
+        time: data.time,
+        value: data.value,
+      },
+    ]);
     console.log(data);
   };
 
   useEffect(() => {
     fetchData();
+    // set interval to update data every 5 seconds
+    const interval = setInterval(() => {
+      fetchData();
+    }
+    , 5000);
+    return () => clearInterval(interval);
   }, []);
 
   return (
