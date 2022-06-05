@@ -1,3 +1,1 @@
-
-
-export const API_HOST_KEY = "url"
+export const API_HOST_KEY = "url";
