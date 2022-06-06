@@ -12,7 +12,7 @@ import { axiosInstance } from "../../utils/axios";
 
 const defaultData = [
   {
-    time: "start",
+    time: "",
     value: 0,
   },
 ];
@@ -26,22 +26,27 @@ export default function Chart() {
 
   const fetchData = async () => {
     const res: any = await  axiosInstance.get('http://127.0.0.1:8000/api/data')
+    const data = res.data[0]
+    const  a1 : chartProp = {
+      time:data.created_at,
+      value: data.temperature,
+    }
+    chartData.push(a1)
     setChartData([
       ...chartData,
       {
-        time: res.data[0].created_at,
-        value: res.data[0].temperature,
+        time: data.created_at,
+        value: data.temperature,
       },
     ]);
-    // console.log( data[0][time]);
   };
 
   console.log(chartData)
 
   useEffect(() => {
     fetchData();
-    // set interval to update data every 5 seconds
-    const interval = setInterval(() => {
+    // set interval to update data every 5 seconds  
+    const interval = setInterval(() => {  
       fetchData();
     }
     , 5000);
