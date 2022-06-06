@@ -1,5 +1,7 @@
-import { Suspense, lazy } from "react";
+import { Suspense, lazy, useState } from "react";
 import { useRoutes } from "react-router-dom";
+import LoginPage from "../pages/LoginPage";
+import RegisterPage from "../pages/RegisterPage";
 
 // -------------------------------------------------
 
@@ -12,11 +14,20 @@ const Loadable = (Component: any) => (props: any) => {
 };
 
 export default function MainRouter() {
+  const [name, setName] = useState('');
   return useRoutes([
     {
       path: "/",
       element: <LandingPage />,
     },
+    {
+      path: "/login",
+      element: <LoginPage setName={setName} />,
+    },
+    {
+      path: "/register",
+      element: <RegisterPage/>,
+    }
   ]);
 }
 
