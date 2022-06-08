@@ -31,17 +31,27 @@ export default function Chart() {
       time:data.created_at,
       value: data.temperature,
     }
-    chartData.push(a1)
-    setChartData([
-      ...chartData,
-      {
-        time: data.created_at,
-        value: data.temperature,
-      },
-    ]);
+    function containsObject(obj: chartProp , list: string | any[]) {
+      var i;
+      for (i = 0; i < list.length; i++) {
+          if (list[i].time === obj.time) {
+              return true;
+          }
+      }
+      return false;
+  }  
+    if(!containsObject(a1, chartData)) {
+      chartData.push(a1)
+      setChartData([
+        ...chartData,
+      ]);
+      if (chartData.length > 10) {
+        chartData.shift()
+      }
+    }
+   
   };
 
-  console.log(chartData)
 
   useEffect(() => {
     fetchData();

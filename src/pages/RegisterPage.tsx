@@ -159,14 +159,9 @@ function SignUp() {
                 mt='0px'>
                 <Text color={textColor} fontWeight='medium'>
                   Already have an account?
-                  <Link
-                    color={titleColor}
-                    as='span'
-                    ms='5px'
-                    href='#'
-                    fontWeight='bold'>
-                    Sign In
-                  </Link>
+                  <Link as = {RouteLink} color={titleColor}  to="/login" ms='5px' fontWeight='bold'  >
+                                Sign In
+                            </Link>
                 </Text>
               </Flex>
             </Flex>

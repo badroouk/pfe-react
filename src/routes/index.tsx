@@ -1,5 +1,6 @@
 import { Suspense, lazy, useState } from "react";
 import { useRoutes } from "react-router-dom";
+import LandingPage from "../pages/LandingPage";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
 
@@ -31,4 +32,4 @@ export default function MainRouter() {
   ]);
 }
 
-const LandingPage = Loadable(lazy(() => import("../pages/LandingPage")));
+//const LandingPage = Loadable(lazy(() => import("../pages/LandingPage")));
