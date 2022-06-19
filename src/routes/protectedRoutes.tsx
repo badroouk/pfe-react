@@ -12,8 +12,8 @@ const ProtectedRoute = ({ isAuth, isAdmin, ...restProps }: Props) => {
     if (isAuth) {
 
         if (isAdmin == "1") {
-            return <Routes><Route path="/admin" element={<AdminPage title={"Authors Table"}
-                captions={["Author", "Function", "Status", "Employed", ""]} />} />
+            return <Routes><Route path="/admin" element={<AdminPage title={"Users Table"}
+                captions={["User", "Role", "Status", "created", ""]} />} />
                 <Route path="/" element={<LandingPage />} /></Routes>
         } else if (isAdmin == "0") {
             return <Routes><Route path="/" element={<LandingPage />} /></Routes>

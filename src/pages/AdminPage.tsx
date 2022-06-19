@@ -2,6 +2,7 @@
 import {
     Table,
     Tbody,
+    Td,
     Text,
     Th,
     Thead,
@@ -13,66 +14,48 @@ import {
   import CardBody from "..//components/Card/CardBody";
   import CardHeader from "..//components/Card/CardHeader";
   import TablesTableRow from "..//components/Tables/TablesTableRow";
-  import React from "react";
+  import React, { useState } from "react";    
+  import axios from "axios";
   
   const AdminPage = ({ title, captions}) => {
+    const [data , setusers] = useState([])
+    const [loading , setloading] = useState(true)
+    const submit = async () => {
+
+        const response = await axios.get('http://localhost:8000/api/users');
+       if (response.status ==200) {
+        setusers(response.data.users);
+        setloading(false)
+       }
+        
+    }
+    submit()
+    const delet = async (e,id) => {
+        const response = await axios.delete(`http://localhost:8000/api/delete/${id}`);
+    }
+    const confirm = async (e,id) => {
+        const response = await axios.put(`http://localhost:8000/api/confirm/${id}`);
+    }
+    var myTable;
+    if (loading === true) {
+        myTable = <Tr><Td><Text> Loading </Text> </Td></Tr>
+    }else {
+        myTable = data.map((row) => {
+            return (
+              <TablesTableRow
+                key={row.id}
+                name={row.email}
+                id={row.id}
+                role={row.role}
+                status={row.pending}
+                date={row.created_at}
+                delet={(e)=>delet(e , row.id)}
+                confirm={(e)=>confirm(e, row.id)}
+              />
+            );
+          })
+    }
     const textColor = useColorModeValue("gray.700", "white");
-    const data = [
-        {
-          logo: "avatar1",
-          name: "Esthera Jackson",
-          email: "alexa@simmmple.com",
-          subdomain: "Manager",
-          domain: "Organization",
-          status: "Online",
-          date: "14/06/21",
-        },
-        {
-          logo: "avatar2",
-          name: "Alexa Liras",
-          email: "laurent@simmmple.com",
-          subdomain: "Programmer",
-          domain: "Developer",
-          status: "Offline",
-          date: "12/05/21",
-        },
-        {
-          logo: "avatar3",
-          name: "Laurent Michael",
-          email: "laurent@simmmple.com",
-          subdomain: "Executive",
-          domain: "Projects",
-          status: "Online",
-          date: "07/06/21",
-        },
-        {
-          logo: "avatar4",
-          name: "Freduardo Hill",
-          email: "freduardo@simmmple.com",
-          subdomain: "Manager",
-          domain: "Organization",
-          status: "Online",
-          date: "14/11/21",
-        },
-        {
-          logo: "avatar5",
-          name: "Daniel Thomas",
-          email: "daniel@simmmple.com",
-          subdomain: "Programmer",
-          domain: "Developer",
-          status: "Offline",
-          date: "21/01/21",
-        },
-        {
-          logo: "avatar7",
-          name: "Mark Wilson",
-          email: "mark@simmmple.com",
-          subdomain: "Designer",
-          domain: "UI/UX Design",
-          status: "Offline",
-          date: "04/09/20",
-        },
-      ];
     return (
       <Card overflowX={{ sm: "scroll", xl: "hidden" }}>
         <CardHeader p='6px 0px 22px 0px'>
@@ -94,20 +77,7 @@ import {
               </Tr>
             </Thead>
             <Tbody>
-              {data.map((row) => {
-                return (
-                  <TablesTableRow
-                    key={`${row.email}-${row.name}`}
-                    name={row.name}
-                    logo={row.logo}
-                    email={row.email}
-                    subdomain={row.subdomain}
-                    domain={row.domain}
-                    status={row.status}
-                    date={row.date}
-                  />
-                );
-              })}
+                {myTable}
             </Tbody>
           </Table>
         </CardBody>
