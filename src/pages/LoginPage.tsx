@@ -22,6 +22,7 @@ import {Navigate} from "react-router-dom";
 
 const Login = (props:{setName: (name: string) =>void}) => {
     const [email, setEmail] = useState('');
+    const [role, setRole] = useState('2');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
 
@@ -44,6 +45,7 @@ const Login = (props:{setName: (name: string) =>void}) => {
         const content = await response.json();
         props.setName(content.email);
        if (content.message !== 'invalid user') {
+        console.log(content.role)
         setRedirect(true);
        }else
        {
@@ -52,8 +54,8 @@ const Login = (props:{setName: (name: string) =>void}) => {
         
     }
 
-    if (redirect) {
-        return <Navigate replace to="/"/>;
+    if (redirect ) {
+        return <Navigate replace to="/admin"/>;
     }
     const titleColor = useColorModeValue("#ffc069", "#ffc069");
     const textColor = useColorModeValue("gray.400", "white");

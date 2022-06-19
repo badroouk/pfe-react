@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+  LineChart,
   BarChart,
   Bar,
   XAxis,
@@ -7,6 +8,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  Line
 } from "recharts";
 import { axiosInstance } from "../../utils/axios";
 
@@ -64,7 +66,7 @@ export default function Chart() {
   }, []);
 
   return (
-    <BarChart
+    <LineChart
       width={500}
       height={300}
       data={chartData}
@@ -80,7 +82,7 @@ export default function Chart() {
       <YAxis />
       <Tooltip />
       <Legend />
-      <Bar dataKey="value" fill="#82ca9d" />
-    </BarChart>
+      <Line dataKey="value" fill="#82ca9d" />
+    </LineChart>
   );
 }
