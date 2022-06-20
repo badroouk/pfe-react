@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import {
+  LineChart,
   BarChart,
   Bar,
   XAxis,
@@ -7,6 +8,7 @@ import {
   CartesianGrid,
   Tooltip,
   Legend,
+  Line
 } from "recharts";
 import { axiosInstance } from "../../utils/axios";
 
@@ -31,17 +33,27 @@ export default function Chart() {
       time:data.created_at,
       value: data.temperature,
     }
-    chartData.push(a1)
-    setChartData([
-      ...chartData,
-      {
-        time: data.created_at,
-        value: data.temperature,
-      },
-    ]);
+    function containsObject(obj: chartProp , list: string | any[]) {
+      var i;
+      for (i = 0; i < list.length; i++) {
+          if (list[i].time === obj.time) {
+              return true;
+          }
+      }
+      return false;
+  }  
+    if(!containsObject(a1, chartData)) {
+      chartData.push(a1)
+      setChartData([
+        ...chartData,
+      ]);
+      if (chartData.length > 10) {
+        chartData.shift()
+      }
+    }
+   
   };
 
-  console.log(chartData)
 
   useEffect(() => {
     fetchData();
@@ -54,7 +66,7 @@ export default function Chart() {
   }, []);
 
   return (
-    <BarChart
+    <LineChart
       width={500}
       height={300}
       data={chartData}
@@ -70,7 +82,7 @@ export default function Chart() {
       <YAxis />
       <Tooltip />
       <Legend />
-      <Bar dataKey="value" fill="#82ca9d" />
-    </BarChart>
+      <Line dataKey="value" fill="#82ca9d" />
+    </LineChart>
   );
 }

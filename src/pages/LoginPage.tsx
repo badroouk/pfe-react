@@ -22,6 +22,7 @@ import {Navigate} from "react-router-dom";
 
 const Login = (props:{setName: (name: string) =>void}) => {
     const [email, setEmail] = useState('');
+    const [role, setRole] = useState('2');
     const [password, setPassword] = useState('');
     const [redirect, setRedirect] = useState(false);
 
@@ -43,7 +44,8 @@ const Login = (props:{setName: (name: string) =>void}) => {
 
         const content = await response.json();
         props.setName(content.email);
-       if (content.message !== 'invalid user') {
+       if (content.message !== 'invalid user' && content.message !== 'user not confirmed') {
+        console.log(content.role)
         setRedirect(true);
        }else
        {
@@ -52,8 +54,8 @@ const Login = (props:{setName: (name: string) =>void}) => {
         
     }
 
-    if (redirect) {
-        return <Navigate replace to="/"/>;
+    if (redirect ) {
+        return <Navigate  to="/"/>;
     }
     const titleColor = useColorModeValue("#ffc069", "#ffc069");
     const textColor = useColorModeValue("gray.400", "white");
@@ -75,14 +77,6 @@ const Login = (props:{setName: (name: string) =>void}) => {
                 style={{ userSelect: "none" }}
                 w={{ base: "100%", md: "50%", lg: "42%" }}>
                 <Flex
-                    //   direction='column'
-                    //   w='445px'
-                    //   background='transparent'
-                    //   borderRadius='15px'
-                    //   p='40px'
-                    //   mx={{ base: "100px" }}
-                    //   bg={bgColor}
-                    //   boxShadow='0 20px 27px 0 rgb(0 0 0 / 5%)'>
                     direction='column'
                     w='100%'
                     background='transparent'
@@ -179,16 +173,19 @@ const Login = (props:{setName: (name: string) =>void}) => {
                 h='100%'
                 w='40vw'
                 position='absolute'
-                right='0px'>
+                right='0px'
+                top='20px'>
                 <Box
                     bgColor = "#FAF5E4"
+                    bgRepeat='no-repeat'
                     bgImage={hello}
                     w='100%'
                     h='100%'
-                    bgSize='cover'
-                    bgPosition='50%'
+                    bgSize='40rem'
+                    bgPosition='center'
                     position='absolute'
-                    borderBottomLeftRadius='20px'></Box>
+                    borderBottomLeftRadius='20px'
+                    borderTopLeftRadius='20px'></Box>
             </Box>
         </Flex>
     </Flex>

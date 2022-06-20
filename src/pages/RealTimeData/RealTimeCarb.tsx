@@ -6,12 +6,13 @@ import {
   Button, 
   ButtonGroup
 } from "@chakra-ui/react";
-import Chart from "../components/chart/Chart";
+import CoChart from "../../components/chart/CoChart";
 
-export default function LandingPage() {
+export default function CarbRealChart() {
   return (
     <Center py={6}>
       <Box
+        marginTop='10%'
         maxW={"1000px"}
         w={"full"}
         bg={useColorModeValue("white", "gray.800")}
@@ -25,7 +26,7 @@ export default function LandingPage() {
           color={useColorModeValue("gray.800", "white")}
           align={"center"}
         >
-          <Chart />
+          <CoChart />
         </Stack>
       </Box>
     </Center>
