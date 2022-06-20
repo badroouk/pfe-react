@@ -19,8 +19,11 @@ function TablesTableRow(props) {
   return (
     <Tr >
       <Td minWidth={{ sm: "250px" }} pl="0px">
-        <Flex align="center" py=".7rem" minWidth="90%" flexWrap="nowrap">
-          <Flex justify="center" align="center" direction="column">
+        <Flex align="center" py=".7rem" minWidth="100%" flexWrap="nowrap">
+          <Flex marginLeft={10} direction="row">
+            <Text fontSize="bolder" color="black.400" fontWeight="normal">
+              {id}-
+            </Text>
             <Text
               fontSize="md"
               color={textColor}
@@ -29,9 +32,7 @@ function TablesTableRow(props) {
             >
               {name}
             </Text>
-            <Text fontSize="sm" color="gray.400" fontWeight="normal">
-              {id}
-            </Text>
+
           </Flex>
         </Flex>
       </Td>

@@ -61,7 +61,7 @@ function SignUp() {
           overflow='hidden'>
           <Box
             position='absolute'
-            minH={{ base: "70vh", md: "50vh" }}
+            minH={{ base: "50vh", md: "50vh" }}
             w={{ md: "calc(100vw - 50px)" }}
             borderRadius={{ md: "15px" }}
             left='0'
@@ -69,10 +69,11 @@ function SignUp() {
             bgRepeat='no-repeat'
             overflow='hidden'
             zIndex='-1'
-            top='0' 
+            top='20' 
             bgColor = "#FAF5E4"
+            bgPosition="center"
             bgImage={hello}
-            bgSize='cover'
+            bgSize='60rem'
             mx={{ md: "auto" }}
             mt={{ md: "14px" }}></Box>
           <Flex
@@ -82,7 +83,7 @@ function SignUp() {
             align='center'
             mt='6.5rem'
             mb='30px'>
-            <Text fontSize='4xl' color='black' fontWeight='bold'>
+            <Text fontSize='4xl' color='#ffc069' fontWeight='bold'>
               Welcome!
             </Text>
           

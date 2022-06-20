@@ -10,10 +10,10 @@ import {
     useColorModeValue,
   } from "@chakra-ui/react";
   // Custom components
-  import Card from "..//components/Card/Card";
-  import CardBody from "..//components/Card/CardBody";
-  import CardHeader from "..//components/Card/CardHeader";
-  import TablesTableRow from "..//components/Tables/TablesTableRow";
+  import Card from "../components/Card/Card";
+  import CardBody from "../components/Card/CardBody";
+  import CardHeader from "../components/Card/CardHeader";
+  import TablesTableRow from "../components/Tables/TablesTableRow";
   import React, { useState } from "react";    
   import axios from "axios";
   
@@ -38,7 +38,7 @@ import {
     }
     var myTable;
     if (loading === true) {
-        myTable = <Tr><Td><Text> Loading </Text> </Td></Tr>
+        myTable = <Tr><Td><Text> Loading ... </Text> </Td></Tr>
     }else {
         myTable = data.map((row) => {
             return (
@@ -57,8 +57,8 @@ import {
     }
     const textColor = useColorModeValue("gray.700", "white");
     return (
-      <Card overflowX={{ sm: "scroll", xl: "hidden" }}>
-        <CardHeader p='6px 0px 22px 0px'>
+      <Card   boxShadow={"2xl"} margin={20} overflowX={{ sm: "scroll", xl: "hidden" }}>
+        <CardHeader align="center" p='6px 20px 40px 0px'>
           <Text fontSize='xl' color={textColor} fontWeight='bold'>
             {title}
           </Text>
@@ -76,7 +76,7 @@ import {
                 })}
               </Tr>
             </Thead>
-            <Tbody>
+            <Tbody >
                 {myTable}
             </Tbody>
           </Table>

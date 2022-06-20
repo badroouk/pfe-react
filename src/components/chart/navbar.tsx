@@ -38,6 +38,9 @@ export default function WithSubnavigation(props: {isadmin:string,setadmin :(isad
    navigation("/login");
 };
 
+  const navigat =()=>{
+    navigation("/register")
+  }
   const { isOpen, onToggle } = useDisclosure();
   let menu;
   if (props.name === '' || props.name === undefined){
@@ -90,7 +93,7 @@ export default function WithSubnavigation(props: {isadmin:string,setadmin :(isad
           </Button>
           <Button
             as={'a'}
-            href={'/register'}
+            onClick = {navigat}
             fontSize={'sm'}
             fontWeight={600}
             color={'white'}
@@ -158,9 +161,9 @@ export default function WithSubnavigation(props: {isadmin:string,setadmin :(isad
             fontSize={'sm'}
             fontWeight={600}
             color={'white'}
-            bg={'pink.400'}
+            bg={'#ffc069'}
             _hover={{
-              bg: 'pink.300',
+              bg: '#f2af52',
             }}>
             Log Out
           </Button>

@@ -56,7 +56,6 @@ function App() {
       <Fragment>
         <MainRouter setName={setName} />
         <ProtectedRoute isAuth={isAuth} isAdmin={isAdmin} />
-        {/* <Protected isAuth={isAuth} path={"/"} element={<LandingPage />}/> */}
       </Fragment>
     </Router>
   );
