@@ -6,7 +6,8 @@ import {
   Button, 
   ButtonGroup
 } from "@chakra-ui/react";
-import CoChart from "../../components/chart/CoChart";
+import CoChart from "../../components/chart/RealTimeChart/CoChart";
+
 
 export default function CarbRealChart() {
   return (

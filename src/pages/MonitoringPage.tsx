@@ -7,8 +7,7 @@ import {
     ButtonGroup,
     Text
   } from "@chakra-ui/react";
-  import Chart from "../components/chart/TempChart";
-  
+   
   export default function MonitoringPage() {
     return (
       <Center py={6}>

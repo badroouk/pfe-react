@@ -6,7 +6,8 @@ import {
   Button, 
   ButtonGroup
 } from "@chakra-ui/react";
-import Chart from "../../components/chart/TempChart";
+import Chart from "../../components/chart/RealTimeChart/TempChart";
+
 
 export default function LandingPage() {
   return (

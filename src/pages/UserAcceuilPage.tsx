@@ -7,7 +7,6 @@ import {
   ButtonGroup,
   Text
 } from "@chakra-ui/react";
-import Chart from "../components/chart/TempChart";
 
 export default function AdminAcceuilPage() {
   return (
@@ -20,12 +19,7 @@ export default function AdminAcceuilPage() {
         rounded={"md"}
         overflow={"hidden"}
       >
-        <Stack
-          textAlign={"center"}
-          p={6}
-          color={useColorModeValue("gray.800", "white")}
-          align={"center"}
-        >
+       
               <Button 
                 as={'a'}
                 href={'/monitoring'}
@@ -58,7 +52,7 @@ export default function AdminAcceuilPage() {
                 _active={{
                   bg:'#ffc069',
                 }}>
-                Actuall conditions
+                Actual conditions
               </Button>
               <Button 
                 bg='#ffc069'
@@ -76,7 +70,7 @@ export default function AdminAcceuilPage() {
                 }}>
                 Statistics
               </Button>
-        </Stack>
+        
       </Box>
     </Center>
   );

@@ -10,7 +10,7 @@ import {
   Legend,
   Line
 } from "recharts";
-import { axiosInstance } from "../../utils/axios";
+import { axiosInstance } from "../../../utils/axios";
 
 const defaultData = [
   {
@@ -23,7 +23,7 @@ type chartProp =  {
   time: string;
   value: number
 }
-export default function LightChart() {
+export default function WaterChart() {
   const [chartData, setChartData] = useState<chartProp[]>(defaultData);
 
   const fetchData = async () => {
@@ -31,7 +31,7 @@ export default function LightChart() {
     const data = res.data[0]
     const  a1 : chartProp = {
       time:data.created_at,
-      value: data.luminosity,
+      value: data.precipitation,
     }
     function containsObject(obj: chartProp , list: string | any[]) {
       var i;

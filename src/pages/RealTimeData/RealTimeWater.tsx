@@ -3,10 +3,9 @@ import {
   Center,
   Stack,
   useColorModeValue,
-  Button, 
-  ButtonGroup
 } from "@chakra-ui/react";
-import WaterChart from "../../components/chart/WaterChart";
+import WaterChart from "../../components/chart/RealTimeChart/WaterChart";
+
 
 export default function WaterRealChart() {
   return (

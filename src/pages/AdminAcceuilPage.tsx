@@ -7,7 +7,6 @@ import {
     ButtonGroup,
     Text
   } from "@chakra-ui/react";
-  import Example from "../components/TimePicker/TimePicker";
   
   export default function AdminAcceuilPage() {
     return (

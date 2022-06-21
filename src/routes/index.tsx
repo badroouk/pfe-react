@@ -1,9 +1,7 @@
 import { Suspense, lazy, useState, useEffect } from "react";
 import { Route, Routes, useRoutes } from "react-router-dom";
-import LandingPage from "../pages/RealTimeData/RealTimeTemp";
 import LoginPage from "../pages/LoginPage";
 import RegisterPage from "../pages/RegisterPage";
-import ProtectedRoute from "./protectedRoutes"
 
 // -------------------------------------------------
 

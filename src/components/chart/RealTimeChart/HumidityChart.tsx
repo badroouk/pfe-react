@@ -10,7 +10,8 @@ import {
   Legend,
   Line
 } from "recharts";
-import { axiosInstance } from "../../utils/axios";
+import { axiosInstance } from "../../../utils/axios";
+
 
 const defaultData = [
   {

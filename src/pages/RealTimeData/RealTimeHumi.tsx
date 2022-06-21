@@ -6,7 +6,7 @@ import {
   Button, 
   ButtonGroup
 } from "@chakra-ui/react";
-import HumidityChart from "../../components/chart/HumidityChart";
+import HumidityChart from "../../components/chart/RealTimeChart/HumidityChart";
 
 export default function HumidityRealChart() {
   return (

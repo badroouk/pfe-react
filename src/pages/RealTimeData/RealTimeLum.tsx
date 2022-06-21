@@ -6,7 +6,8 @@ import {
   Button, 
   ButtonGroup
 } from "@chakra-ui/react";
-import LightChart from "../../components/chart/LightChart";
+import LightChart from "../../components/chart/RealTimeChart/LightChart";
+
 
 export default function LightRealChart() {
   return (

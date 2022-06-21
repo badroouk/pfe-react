@@ -12,6 +12,12 @@ import UvRealChart from '../pages/RealTimeData/RealTimeUv';
 import LightRealChart from '../pages/RealTimeData/RealTimeLum';
 import WaterRealChart from '../pages/RealTimeData/RealTimeWater';
 import Backup from '../pages/BackUpData/BackUpMenu';
+import BackUpTemp from '../pages/BackUpData/BackUpDataTemp';
+import BackUpUv from '../pages/BackUpData/BackUpDataTemp';
+import BackUpLight from '../pages/BackUpData/BackUpDataLight';
+import BackUpCo from '../pages/BackUpData/BackUpDataCo';
+import BackUpWater from '../pages/BackUpData/BackUpDataWater';
+import BackUpHum from '../pages/BackUpData/BackUpDataHum';
 
 
 
@@ -34,6 +40,12 @@ const ProtectedRoute = ({ isAuth, isAdmin }: Props) => {
                 <Route path="/realtime/uv" element={<UvRealChart />} />
                 <Route path="/realtime/carb" element={<CarbRealChart />} />
                 <Route path="/realtime/water" element={<WaterRealChart />} />
+                <Route path="/backup/temp" element={<BackUpTemp />} />
+                <Route path="/backup/uv" element={<BackUpUv />} />
+                <Route path="/backup/light" element={<BackUpLight />} />
+                <Route path="/backup/co" element={<BackUpCo />} />
+                <Route path="/backup/water" element={<BackUpWater />} />
+                <Route path="/backup/hum" element={<BackUpHum />} />
                 <Route path="/backup" element={<Backup />} /></Routes>
         } else if (isAdmin == "0") {
             return <Routes><Route path="/" element={<UserAcceuilPage />} />

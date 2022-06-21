@@ -6,7 +6,8 @@ import {
   Button, 
   ButtonGroup
 } from "@chakra-ui/react";
-import UvChart from "../../components/chart/UvChart";
+import UvChart from "../../components/chart/RealTimeChart/UvChart";
+
 
 export default function UvRealChart() {
   return (

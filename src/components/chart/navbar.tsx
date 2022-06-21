@@ -14,16 +14,16 @@ import {
   useColorModeValue,
   useBreakpointValue,
   useDisclosure,
+  Image
 } from '@chakra-ui/react';
 import { useNavigate } from "react-router-dom";
+import arduino from "../../assets/img/arduino.png";
 import {
   HamburgerIcon,
   CloseIcon,
   ChevronDownIcon,
   ChevronRightIcon,
 } from '@chakra-ui/icons';
-import { useEffect } from 'react';
-
 export default function WithSubnavigation(props: {isadmin:string,setadmin :(isadmin: string) =>void, name: string ,setName: (name: string) =>void}){
   let navigation = useNavigate();
   const logout= async ()=>{
@@ -70,12 +70,11 @@ export default function WithSubnavigation(props: {isadmin:string,setadmin :(isad
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Text
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            fontFamily={'heading'}
-            color={useColorModeValue('gray.800', 'white')}>
-            Logo
-          </Text>
+        <Image 
+          boxSize='60px'
+          borderRadius='full'
+          src = {arduino}/>
+        
         </Flex>
 
         <Stack
@@ -138,14 +137,12 @@ export default function WithSubnavigation(props: {isadmin:string,setadmin :(isad
           />
         </Flex>
         <Flex flex={{ base: 1 }} justify={{ base: 'center', md: 'start' }}>
-          <Text
-            textAlign={useBreakpointValue({ base: 'center', md: 'left' })}
-            fontFamily={'heading'}
-            color={useColorModeValue('gray.800', 'white')}>
-            hey     {props.name}
-          </Text>
+          <Image 
+          boxSize='50px'
+          borderRadius='full'
+          src = {arduino}/>
 
-          <Flex display={{ base: 'none', md: 'flex' }} ml={10}>
+          <Flex display={{ base: 'flex', md: 'flex' }} ml={10}>
             <DesktopNav />
           </Flex>
         </Flex>
